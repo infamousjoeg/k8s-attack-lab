@@ -1,0 +1,9 @@
+http://k8sattack.cybr.rocks:300xx 
+
+http://k8sattack2.cybr.rocks:300xx 
+
+1. namespace
+2. token
+3. cluster dns name
+3. find kubectl
+4. ./kubectl --token <token> --server <server> --insecure-skip-tls-verify -n <namespace>

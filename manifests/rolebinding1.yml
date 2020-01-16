@@ -1,0 +1,14 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: redis-get-secrets-on-pods-binding
+  namespace: $MARS_NAMESPACE
+subjects:
+- kind: ServiceAccount
+  name: redis
+  namespace: $MARS_NAMESPACE
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: get-secrets-on-pods-to-redis
+  apiGroup: ""

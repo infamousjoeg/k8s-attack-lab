@@ -1,0 +1,14 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: frontend-get-list-exec-pods-binding
+  namespace: $MARS_NAMESPACE
+subjects:
+- kind: ServiceAccount
+  name: frontend
+  namespace: $MARS_NAMESPACE
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: get-list-exec-pods
+  apiGroup: ""

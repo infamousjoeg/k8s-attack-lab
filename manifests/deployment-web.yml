@@ -1,0 +1,35 @@
+apiVersion: apps/v1 # apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: $MARS_NAMESPACE
+  labels:
+    app: guestbook
+spec:
+  selector:
+    matchLabels:
+      app: guestbook
+      tier: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: guestbook
+        tier: frontend
+    spec:
+      serviceAccountName: frontend
+      containers:
+      - name: php-redis
+        image:  mydockerid4/ttyd-workshop
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
+        - name: NAMESPACE
+          value: $MARS_NAMESPACE
+        ports:
+        - containerPort: 7681

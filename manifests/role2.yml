@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: Role
+metadata:
+  name: get-list-exec-pods
+  namespace: $MARS_NAMESPACE
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["pods"]
+  verbs: ["get", "list", "exec"]
+- apiGroups: [""]
+  resources: ["pods/exec"]
+  verbs: ["create"]

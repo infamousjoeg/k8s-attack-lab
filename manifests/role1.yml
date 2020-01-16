@@ -1,0 +1,10 @@
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: Role
+metadata:
+  name: get-secrets-on-pods-to-redis
+  namespace: $MARS_NAMESPACE
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get", "list"]
+  resourceNames: ["flag"]

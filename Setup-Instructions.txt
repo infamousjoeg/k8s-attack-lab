@@ -1,0 +1,24 @@
+Run the ./yamls/startMultiple.sh (change the for loop for how many you wants).
+
+It will create an environment for eac user:
+User 1 will access https://<public_ip>:30001
+User 2 will access https://<public_ip>:30002
+...
+
+And so on.
+
+Accessing the webpage will open a webterminal.
+They will need to check the environment variables, find the service account token and notice that they have a folder named "/checkme" that contains `kubectl` file.  
+
+To use it, they will need to run it like that:  
+./kubectl --token <token> --server <cluster_server> --insecure-skip-tls-verify -n <namespace>
+
+The <token> can be found here:
+
+The <cluster_server> can be used by its DNS name: https://kubernetes.default.svc
+
+The <namespace> can be found in the environment variables.
+
+
+In the solution file you will find all the commands to solve it.
+To clean, run clean.sh.
